@@ -20,7 +20,12 @@ function getFlightsPage(req, res) {
 }
    
 function addFlightsPage(req, res) {
-    res.render("update")
+    // must ask about using Flight as a function 
+    const newFlight = new Flight();
+    const dt = newFlight.departs;
+    const departsDate = dt.toISOString().slice(0, 16);
+    res.render("update", {departsDate})
+    //console.log(departsDate)
 }
 
 async function create(req, res) {
