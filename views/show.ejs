@@ -6,7 +6,11 @@
             Flight Number: <%= i.flightNo %> <br>
             Airport Code: <%= i.airport %> <br>
             Airline: <%= i.airline %> <br>
-            Departure: <%= i.departs %> <br>
+            Departure:  <% if(i.departs > new Date()) { %>
+                            <%= i.departs %> 
+                        <% } else { %> 
+                           <span><%= i.departs %></span>
+                        <% } %>
         </li>
     <% } %>
    
