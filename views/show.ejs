@@ -1,0 +1,15 @@
+<%- include("./partials/head") %>
+
+    <h1>Displaying All Flights:</h1>
+    <% for(let i of flights) { %>
+        <li>
+            Flight Number: <%= i.flightNo %> <br>
+            Airport Code: <%= i.airport %> <br>
+            Airline: <%= i.airline %> <br>
+            Departure: <%= i.departs %> <br>
+        </li>
+    <% } %>
+   
+
+</body>
+</html>
