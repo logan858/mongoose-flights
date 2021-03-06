@@ -1,35 +1,38 @@
 <%- include("./partials/head") %>
-    <h1>Add a Flight</h1>
+    <main>
+        <h1>Add a Flight</h1>
+        <div id="index-blurb">   
+            <form method="POST" action="/update">
+                <label>Airline Name:
+                    <select name="airline" required>
+                        <option value="American">American</option>
+                        <option value="Southwest">Southwest</option>
+                        <option value="United">United</option>
+                    </select>
+                </label>
 
-    <form method="POST" action="/update">
-        <label>Airline Name:
-            <select name="airline" required>
-                <option value="American">American</option>
-                <option value="Southwest">Southwest</option>
-                <option value="United">United</option>
-            </select>
-        </label>
+                <label>Airport:
+                    <select name="airport">
+                        <option value="AUS">AUS</option>
+                        <option value="DFW">DFW</option>
+                        <option value="DEN">DEN</option>
+                        <option value="LAX">LAX</option>
+                        <option value="SAN">SAN</option>
+                    </select>
+                </label>
 
-        <label>Airport:
-            <select name="airport">
-                <option value="AUS">AUS</option>
-                <option value="DFW">DFW</option>
-                <option value="DEN">DEN</option>
-                <option value="LAX">LAX</option>
-                <option value="SAN">SAN</option>
-            </select>
-        </label>
+                <label>Flight Number:
+                    <input name="flightNum" type="number" required min="10" max="9999">
+                </label>
 
-        <label>Flight Number:
-            <input name="flightNum" type="text" required>
-        </label>
+                <label>Departure Date:
+                    <input name="date" type="datetime-local" value="<%=departsDate%>">
+                </label>
 
-        <label>Departure Date:
-            <input name="date" type="datetime-local" value="<%=departsDate%>">
-        </label>
-
-        <input type="submit" value="Add Flight">
-    </form>
+                <input type="submit" value="Add Flight">
+            </form>
+        </div>
+    </main>
 
 </body>
 </html>

@@ -1,0 +1,20 @@
+<%- include("./partials/head") %>
+    <main>
+        <h1>Displaying All Flights:</h1>
+        <% flights.sort((x, y) => x.departs - y.departs) %>
+        <% for(let i of flights) { %>
+            <li>
+                <b>Flight Number:&nbsp; </b> <%= i.flightNo %> <br>
+                <b>Airport Code:&nbsp;</b> <%= i.airport %> <br>
+                <b>Airline:&nbsp;</b> <%= i.airline %> <br>
+                <b>Departure:&nbsp;</b>  <% if(i.departs > new Date()) { %>
+                                <%= i.departs %> 
+                            <% } else { %> 
+                            <span><%= i.departs %></span>
+                            <% } %>
+            </li>
+        <% } %>
+    </main>
+
+</body>
+</html>

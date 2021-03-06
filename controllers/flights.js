@@ -15,7 +15,7 @@ function getFlightsPage(req, res) {
         if(err) {
             res.send("something went wrong")
         } 
-        res.render("show", {flights: x});
+        res.render("posts", {flights: x});
     })
 }
    

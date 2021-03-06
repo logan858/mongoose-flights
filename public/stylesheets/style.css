@@ -1,10 +1,17 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: rgba(226, 241, 255, 0.596);
+  font-family: 'Montserrat', sans-serif;
 }
-
 a {
-  color: #00B7FF;
+  color: black;
+  margin: 10px;
+}
+main {
+  background-color:rgba(88, 88, 88, 0.3);
+  padding: 10px;
+  border-radius: 5px;
 }
 label {
   display:block;
@@ -12,7 +19,37 @@ label {
 }
 li {
   margin: 10px;
+  background-color: rgba(125, 149, 180, 0.7);
+  border-radius: 5px;
+  border: rgba(0,0,0,0.3) 1px dotted;
+  padding: 2px 2px 2px 15px;
+  list-style: none;
 }
 span {
   color: red;
+}
+h1 {
+  margin-left: 15px;
+  font-size: 20px;
+  color: rgb(236, 236, 236);
+}
+#index-main {
+  width: 50%;
+  padding: 15px;
+}
+#index-blurb {
+  margin: 10px;
+  background-color: rgba(125, 149, 180, 0.7);
+  border-radius: 5px;
+  border: rgba(0,0,0,0.3) 1px dotted;
+  padding: 15px;
+  list-style: none;
+  font-weight: 600;
+}
+nav {
+  background-color: rgba(88, 88, 88, 0.3);
+  padding: 1px 1px 1px 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-weight: 700;
 }
