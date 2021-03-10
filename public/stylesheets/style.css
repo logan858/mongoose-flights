@@ -6,7 +6,7 @@ body {
 }
 a {
   color: black;
-  margin: 10px;
+  text-decoration: none;
 }
 main {
   background-color:rgba(88, 88, 88, 0.3);
@@ -52,4 +52,31 @@ nav {
   margin-bottom: 10px;
   border-radius: 5px;
   font-weight: 700;
+}
+#add-desties {
+  margin-left: 20px;
+}
+button {
+  background-color: rgba(125, 149, 180, 0.7);
+  border: rgba(0,0,0,0.3) 1px dotted;
+  padding: 3px;
+  border-radius: 3px;
+  color: rgb(236, 236, 236);
+}
+#input {
+  margin-top: 5px;
+  background-color: rgba(226, 241, 255, 0.596);
+  border: rgba(0,0,0,0.3) 1px dotted;
+  padding: 3px;
+  border-radius: 3px;
+}
+#table {
+  margin: 10px;
+  background-color: rgba(125, 149, 180, 0.7);
+  border-radius: 5px;
+  border: rgba(0,0,0,0.3) 1px dotted;
+  padding: 15px;
+}
+#del {
+  display: inline;
 }
