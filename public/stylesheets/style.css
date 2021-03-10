@@ -56,12 +56,16 @@ nav {
 #add-desties {
   margin-left: 20px;
 }
+#add-desties {
+  margin-left: 20px;
+}
 button {
   background-color: rgba(125, 149, 180, 0.7);
   border: rgba(0,0,0,0.3) 1px dotted;
   padding: 3px;
   border-radius: 3px;
   color: rgb(236, 236, 236);
+  cursor: pointer;
 }
 #input {
   margin-top: 5px;
@@ -70,13 +74,25 @@ button {
   padding: 3px;
   border-radius: 3px;
 }
-#table {
+.table {
   margin: 10px;
   background-color: rgba(125, 149, 180, 0.7);
   border-radius: 5px;
   border: rgba(0,0,0,0.3) 1px dotted;
   padding: 15px;
 }
-#del {
+.del {
   display: inline;
+}
+#ticket-del {
+  height: auto;  
+  cursor: pointer;
+}
+#ticket-format {
+  display: inline;
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 2px;
+}
+#tickets-form {
+  display:inline;
 }

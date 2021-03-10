@@ -8,23 +8,37 @@
         <b>Airline:&nbsp;</b> <%= i.airline %> <br>
         <b>Departure:&nbsp;</b>  <%= i.departs %><br>
         
-        <div id="table">
+        <div class="table">
         <table>
-            <b>Destinations:<br></b>
+            <b>Destinations:</b><br>
             <% i.destinations.sort((x, y) => x.arrival - y.arrival) %>
             <% for(j of i.destinations) { %>
                 <tr>
                     <th><%= j.airport %> : <%= j.arrival %> 
-                        <form id="del" method="POST" action="/destinations/del/<%=j._id%>">
+                        <form class="del" method="POST" action="/destinations/del/<%=j._id%>">
                             <button type="submit">X</button>
                         </form>
                     </th>
                 </tr>
             <% } %>
         </table>
-        </div>
-    <% } %>
+        <% } %>
+     </div>
 
+    <div class="table">
+        <b>Tickets:</b><br>
+        <% for(i of seats) { %>
+            <p id="ticket-format">
+            <b>Seat:</b> <%= i.seat %> &nbsp;
+            <b>Price:</b> <%= i.price %>
+            <form class="del" method="POST" action="/destinations/delseat/<%=i.id%>">
+                &nbsp;<button type="submit" id="ticket-del">x</button>
+            </form>
+            <b>,</b> &nbsp;&nbsp;</p>
+        <% } %> 
+    </div>
+    
+    
     <form id="add-desties" method="POST" action="/destinations/<%=flight[0]._id%>">
         <h3>Add a destination:</h3> 
         Airport:<select type="text" name="airport">
@@ -37,7 +51,7 @@
             <%    return x.airport !== currentVal %>
             <% } %>
 
-            <% if(flight[0].destinations.every(tester)) { %>
+            <% if(flight[0].destinations.every(tester) && flight[0].airport !== arr[i] ) { %>
                 <option value="<%=currentVal%>"><%=currentVal%></option>
             <% } %>
         <% } %>
@@ -46,6 +60,14 @@
             &nbsp; 
         Date:<input type="datetime-local" name="date" required>
         <button type="submit">Submit</button>
+    </form><br>
+
+    <form id="add-seaties" method="POST" action="/destinations/<%=flight[0]._id%>/seats/">
+        <h3>Add a seat:</h3>
+        Seat Id (A1 - F99) : <input name="seat" required pattern="[A-F][1-9]\d?">
+        &nbsp;Price: <input name="price" type="number" required>    
+        <button type="submit">Submit</button>
     </form>
+
 </p>
 </main>

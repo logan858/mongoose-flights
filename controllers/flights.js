@@ -9,6 +9,7 @@ module.exports = {
 }
 
 let Flight = require("../models/flight");
+let Seat = require("../models/ticket");
 
 function indexP(req, res) {
     res.render("flights")
@@ -30,8 +31,12 @@ function addFlightsPage(req, res) {
 }
 
 async function addDestinationsPage(req, res) {
+    let seats = await Seat.find({flight: req.params.id})
     await Flight.find({_id: req.params.id}, function(err, x) {
-        res.render("destinations", {flight: x})
+        res.render("destinations", {
+            flight: x,
+            seats: seats,
+        })
     })
 }
 async function addDestinations(req, res) {
