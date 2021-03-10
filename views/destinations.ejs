@@ -1,43 +1,51 @@
 <%- include("./partials/head") %>
 <main>
+<h1>Flight Details:</h1>
+<p id="index-blurb">
+    <% for(let i of flight) { %>
+        <b>Flight Number:&nbsp; </b> <%= i.flightNo %> <br>
+        <b>Airport Code:&nbsp;</b> <%= i.airport %> <br>
+        <b>Airline:&nbsp;</b> <%= i.airline %> <br>
+        <b>Departure:&nbsp;</b>  <%= i.departs %><br>
+        
+        <div id="table">
+        <table>
+            <b>Destinations:<br></b>
+            <% i.destinations.sort((x, y) => x.arrival - y.arrival) %>
+            <% for(j of i.destinations) { %>
+                <tr>
+                    <th><%= j.airport %> : <%= j.arrival %> 
+                        <form id="del" method="POST" action="/destinations/del/<%=j._id%>">
+                            <button type="submit">X</button>
+                        </form>
+                    </th>
+                </tr>
+            <% } %>
+        </table>
+        </div>
+    <% } %>
 
-    <h1>Flight Details:</h1>
-    <p id="index-blurb">
-       <% for(let i of flight) { %>
-            <b>Flight Number:&nbsp; </b> <%= i.flightNo %> <br>
-            <b>Airport Code:&nbsp;</b> <%= i.airport %> <br>
-            <b>Airline:&nbsp;</b> <%= i.airline %> <br>
-            <b>Departure:&nbsp;</b>  <%= i.departs %><br>
-            
-            <div id="table">
-            <table>
-                <b>Destinations:<br></b>
-                <% i.destinations.sort((x, y) => x.arrival - y.arrival) %>
-                <% for(j of i.destinations) { %>
-                    <tr>
-                        <th><%= j.airport %> : <%= j.arrival %> 
-                            <form id="del" method="POST" action="/destinations/del/<%=j._id%>">
-                                <button type="submit">X</button>
-                            </form>
-                        </th>
-                    </tr>
-                <% } %>
-            </table>
-            </div>
+    <form id="add-desties" method="POST" action="/destinations/<%=flight[0]._id%>">
+        <h3>Add a destination:</h3> 
+        Airport:<select type="text" name="airport">
+        <% let arr = ["AUS", "DFW", "DEN", "LAX", "SAN"] %>
+        
+        <% for(i = 0; i < arr.length; i++) { %>   
+            <% let currentVal = arr[i] %>
 
+            <% function tester(x) { %>
+            <%    return x.airport !== currentVal %>
+            <% } %>
+
+            <% if(flight[0].destinations.every(tester)) { %>
+                <option value="<%=currentVal%>"><%=currentVal%></option>
+            <% } %>
         <% } %>
-        <form id="add-desties" method="POST" action="/destinations/<%=flight[0]._id%>">
-            <h3>Add a destination:</h3> 
-            Airport:<select type="text" name="airport">
-                        <option value="AUS">AUS</option>
-                        <option value="DFW">DFW</option>
-                        <option value="DEN">DEN</option>
-                        <option value="LAX">LAX</option>
-                        <option value="SAN">SAN</option>
-                    </select>
-                &nbsp; 
-            Date:<input type="datetime-local" name="date" required>
-            <button type="submit">Submit</button>
-        </form>
-    </p>
+
+                </select>
+            &nbsp; 
+        Date:<input type="datetime-local" name="date" required>
+        <button type="submit">Submit</button>
+    </form>
+</p>
 </main>

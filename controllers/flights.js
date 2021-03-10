@@ -37,7 +37,6 @@ async function addDestinationsPage(req, res) {
 async function addDestinations(req, res) {
     try {
         let foundFlight = await Flight.findById(req.params.id)
-        console.log(foundFlight)
         let flightObj =  {
             airport: req.body.airport,
             arrival: req.body.date,
@@ -50,26 +49,18 @@ async function addDestinations(req, res) {
     }
 };
 function delDestinations(req, res) {
-    console.log(req.params.id)
-    
     Flight.find({"destinations._id": req.params.id}, async function(err, dests) {
         try {
             console.log(dests)
             dests[0].destinations.id(req.params.id).remove()
-            
             await dests[0].save()
-
             res.redirect("/show")
         } catch (err) {
             console.log(err)
             return res.send("error")
         }
-})
-
-
-    
+    })
 }
-
 async function create(req, res) {
     for (let x in req.body) {
         if (req.body[x] === '') delete req.body[x];
